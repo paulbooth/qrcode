@@ -17,6 +17,7 @@ var canvas = require('./bindings')
   , Context2d = require('./context2d')
   , PNGStream = require('./pngstream')
   , JPEGStream = require('./jpegstream')
+  , FontFace = canvas.FontFace
   , fs = require('fs');
 
 /**
@@ -29,7 +30,7 @@ var Canvas = exports = module.exports = Canvas;
  * Library version.
  */
 
-exports.version = '0.13.1';
+exports.version = '1.0.0';
 
 /**
  * Cairo version.
@@ -62,6 +63,29 @@ exports.PNGStream = PNGStream;
 exports.JPEGStream = JPEGStream;
 exports.PixelArray = PixelArray;
 exports.Image = Image;
+
+if (FontFace) {
+  function Font(name, path, idx) {
+    this.name = name;
+    this._faces = {};
+
+    this.addFace(path, 'normal', 'normal', idx);
+  };
+
+  Font.prototype.addFace = function(path, weight, style, idx) {
+    style = style || 'normal';
+    weight = weight || 'normal';
+
+    var face = new FontFace(path, idx || 0);
+    this._faces[weight + '-' + style] = face;
+  };
+
+  Font.prototype.getFace = function(weightStyle) {
+    return this._faces[weightStyle] || this._faces['normal-normal'];
+  };
+
+  exports.Font = Font;
+}
 
 /**
  * Context2d implementation.
@@ -116,6 +140,7 @@ Canvas.prototype.getContext = function(contextId){
  * @api public
  */
 
+Canvas.prototype.pngStream =
 Canvas.prototype.createPNGStream = function(){
   return new PNGStream(this);
 };
@@ -127,6 +152,7 @@ Canvas.prototype.createPNGStream = function(){
  * @api public
  */
 
+Canvas.prototype.syncPNGStream =
 Canvas.prototype.createSyncPNGStream = function(){
   return new PNGStream(this, true);
 };
@@ -139,6 +165,7 @@ Canvas.prototype.createSyncPNGStream = function(){
  * @api public
  */
 
+Canvas.prototype.jpegStream =
 Canvas.prototype.createJPEGStream = function(options){
   return this.createSyncJPEGStream(options);
 };
@@ -151,6 +178,7 @@ Canvas.prototype.createJPEGStream = function(options){
  * @api public
  */
 
+Canvas.prototype.syncJPEGStream =
 Canvas.prototype.createSyncJPEGStream = function(options){
   options = options || {};
   return new JPEGStream(this, {

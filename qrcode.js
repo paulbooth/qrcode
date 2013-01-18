@@ -14,7 +14,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 var server = http.createServer(app);
 
-var port = 3000;
+var port = 49374;
 
 app.get('/create/:string/:qrtext', function(req, res) {
   var string = req.params.string;

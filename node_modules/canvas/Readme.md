@@ -79,14 +79,14 @@ img.dataMode = Image.MODE_MIME | Image.MODE_IMAGE; // Both are tracked
 
 If image data is not tracked, and the Image is drawn to an image rather than a PDF canvas, the output will be junk. Enabling mime data tracking has no benefits (only a slow down) unless you are generating a PDF.
 
-### Canvas#createPNGStream()
+### Canvas#pngStream()
 
-  To create a `PNGStream` simply call `canvas.createPNGStream()`, and the stream will start to emit _data_ events, finally emitting _end_ when finished. If an exception occurs the _error_ event is emitted.
+  To create a `PNGStream` simply call `canvas.pngStream()`, and the stream will start to emit _data_ events, finally emitting _end_ when finished. If an exception occurs the _error_ event is emitted.
 
 ```javascript
 var fs = require('fs')
   , out = fs.createWriteStream(__dirname + '/text.png')
-  , stream = canvas.createPNGStream();
+  , stream = canvas.pngStream();
 
 stream.on('data', function(chunk){
   out.write(chunk);
@@ -99,9 +99,9 @@ stream.on('end', function(){
 
 Currently _only_ sync streaming is supported, however we plan on supporting async streaming as well (of course :) ). Until then the `Canvas#toBuffer(callback)` alternative is async utilizing `eio_custom()`.
 
-### Canvas#createJPEGStream()
+### Canvas#jpegStream()
 
-You can likewise create a `JPEGStream` by calling `canvas.createJPEGStream()` with some optional parameters; functionality is otherwise identical to `createPNGStream()`. See `examples/crop.js` for an example.
+You can likewise create a `JPEGStream` by calling `canvas.jpegStream()` with some optional parameters; functionality is otherwise identical to `pngStream()`. See `examples/crop.js` for an example.
 
 ### Canvas#toBuffer()
 
@@ -249,6 +249,40 @@ Tested with and designed for:
 
 For node 0.2.x `node-canvas` <= 0.4.3 may be used,
 0.5.0 and above are designed for node 0.4.x only.
+
+## Contributors
+
+```
+project  : node-canvas
+ repo age : 1 year, 11 months
+ active   : 120 days
+ commits  : 963
+ files    : 72
+ authors  : 
+   816	Tj Holowaychuk          84.7%
+    58	TJ Holowaychuk          6.0%
+    23	c-spencer               2.4%
+    16	Nathan Rajlich          1.7%
+    12	atomizer                1.2%
+     6	Elijah Hamovitz         0.6%
+     5	Luigi Pinca             0.5%
+     5	Robert Sköld            0.5%
+     4	obarthel                0.4%
+     3	Don Park                0.3%
+     2	Andreas Botsikas        0.2%
+     2	Gabriel Falcao          0.2%
+     1	Brian McKinney          0.1%
+     1	Seiya Konno             0.1%
+     1	Syoyo Fujita            0.1%
+     1	Marcello Bastea-Forte   0.1%
+     1	Tharit                  0.1%
+     1	Konstantin Käfer        0.1%
+     1	Tom Carden              0.1%
+     1	Walt Lin                0.1%
+     1	David Björklund         0.1%
+     1	Brian White             0.1%
+     1	Philippe Plantier       0.1%
+```
 
 ## License
 
