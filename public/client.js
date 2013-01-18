@@ -13,7 +13,7 @@ function goTime() {
   }
   $('#result-div').remove();
   $('#content').append($('<div id="loading">Loading...</div>'));
-  $.get('/create?string=' + encodeURIComponent(string) + '&qrtext=' + qrtext, function(data) {
+  $.get('create?string=' + encodeURIComponent(string) + '&qrtext=' + qrtext, function(data) {
     var $resultdiv = $('<div></div>');
     $resultdiv.attr('id', 'result-div');
 
