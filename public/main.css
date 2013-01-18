@@ -2,6 +2,18 @@ body {
   text-align: center;
 }
 
+#title {
+  margin-bottom: 0px;
+  line-height: 1.4em;
+  margin-top: 1.25em;
+  color:#333;
+}
+
+#subtitle {
+  margin-bottom: 2em;
+  color:#444;
+}
+
 #content {
   max-width: 300px;
   border-radius: 15px;
