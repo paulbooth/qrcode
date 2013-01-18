@@ -25,14 +25,14 @@ function goTime() {
     var $resulttext = $('<div></div>');
     if (data.result) {
       if (data.result == string) {
-        $resulttext.addClass('result-correct')
+        $resulttext.addClass('result-correct');
         $resulttext.html('<b>Success!</b> <a href="' + data.result + '">' + data.result + '</a>');
       } else {
-        $resulttext.addClass('result-incorrect')
+        $resulttext.addClass('result-incorrect');
         $resulttext.html('<b>Oops!</b> <a href="' + data.result + '">' + data.result + '</a>');
       }
     } else {
-      $resulttext.addClass('result-incorrect')
+      $resulttext.addClass('result-incorrect');
       $resulttext.html('<b>Couldn\'t read QR code.</b> Might work anyway.');
     }
     $resultdiv.append($resulttext);
@@ -40,7 +40,7 @@ function goTime() {
     var $resultcode = $('<input type="text">');
     $resultcode.attr('id', 'codebox');
     $resultcode.val('<img src="' + data.image + '">');
-    $resultcode.attr('onClick', 'selectText(this);')
+    $resultcode.attr('onClick', 'selectText(this);');
     $resultdiv.append($resultcode);
 
     $('#loading').remove();
