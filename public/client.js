@@ -1,10 +1,15 @@
+function selectText(textField) {
+  textField.focus();
+  textField.select();
+}
+
 function goTime() {
   var string = $('#string-text').val();
   var qrtext = $('#qr-text').val();
   console.log(string);
   console.log(qrtext);
   if (string.length == 0) {
-    string = 'http://thepaulbooth.com';
+    string = 'http://thepaulbooth.com/qrcode';
   }
   $('#result-div').remove();
   $('#content').append($('<div id="loading">Loading...</div>'));
@@ -31,6 +36,12 @@ function goTime() {
       $resulttext.html('<b>Couldn\'t read QR code.</b> Might work anyway.');
     }
     $resultdiv.append($resulttext);
+
+    var $resultcode = $('<input type="text">');
+    $resultcode.attr('id', 'codebox');
+    $resultcode.val('<img src="' + data.image + '">');
+    $resultcode.attr('onClick', 'selectText(this);')
+    $resultdiv.append($resultcode);
 
     $('#loading').remove();
     $('#content').append($resultdiv);

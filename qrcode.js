@@ -15,8 +15,6 @@ app.use(express.static(__dirname + '/public'));
 var server = http.createServer(app);
 
 var port = 3000;
-var string = 'Hey', qrtext = 'Happy birthday to you! Happy birthday to you! Happy birthday dear Nirav! Happy birthday to you!';
-
 
 app.get('/create/:string/:qrtext', function(req, res) {
   var string = req.params.string;
@@ -114,7 +112,7 @@ function getQRCode(string, qrtext, callback) {
         if (letterCode == 43) letterWidth = 3; // q
         if (letterCode >= 47) letterWidth = 3; // u v w x y z
         if (letterCode == 49) letterWidth = 5; // w
-
+        if (letterCode == 52) letterWidth = 2; // z
         return letterWidth;
       };
 
