@@ -1,0 +1,57 @@
+body {
+  text-align: center;
+}
+
+#content {
+  max-width: 300px;
+  border-radius: 15px;
+  background-color: #F0F0F0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CCC;
+  padding: 10px;
+  text-align: left;
+  margin: auto;
+}
+
+#button-div {
+  position: relative;
+  text-align: center;
+}
+
+.textbox-div {
+  position: relative;
+}
+
+#string-text {
+  width: 280px;
+}
+
+#qr-text {
+  width: 280px;
+}
+
+#go-button {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#result-div {
+  text-align: center;
+}
+
+.result-correct {
+  color: #0A0;
+}
+
+.result-correct a {
+  color: #00A;
+}
+
+.result-incorrect {
+  color: #A00;
+}
+
+#result-img {
+  margin: 15px auto;
+}

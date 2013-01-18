@@ -1,0 +1,22 @@
+!!! 5
+html(lang='en')
+  head
+    title QR Code Generator With Text for URLs, websites, events, etc.
+    script(src='//code.jquery.com/jquery-1.9.0.min.js')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootswatch/2.1.1/readable/bootstrap.min.css')
+    script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/main.css')
+    script(src='client.js')
+
+  body
+    h1 Get your awesome QR code.
+    div(id='content')
+      div(class='textbox-div')
+        | URL/text to encode: 
+        input(type='text', id='string-text', placeholder="My site, e.g. http://jezzpaul.com", autofocus)
+      div(class='textbox-div')
+        | Text to overlay: 
+        input(type='text', id='qr-text', placeholder="My initials, e.g. PHB")
+      div(id='button-div')
+        button(type='button', id='go-button', class='btn btn-primary', data-loading-text='Loading...', onclick='goTime();') QR Go Time
