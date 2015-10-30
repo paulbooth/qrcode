@@ -6,10 +6,10 @@ var Canvas = require('canvas')
       , qrcode = require('jsqrcode')(Canvas);
 var express = require('express'),
     http = require('http');
+var bodyParser = require('body-parser');
 
 var app = express();
-app.use(express.logger());
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded());
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 var server = http.createServer(app);
@@ -50,7 +50,6 @@ function getQRCode(string, qrtext, callback) {
     letterImage.decode(function (letterPixels) {
       // letterPixels is a 1D array containing pixel data
 
-
       var blockSize = 4, marginSize = 20;
       var qrcodeWidth = Math.floor((canvas.width - marginSize * 2) / blockSize); // this seems to work.
       var textWidth = getTextWidth(qrtext), textHeight = 5;
@@ -74,7 +73,7 @@ function getQRCode(string, qrtext, callback) {
         }
 
         // and spaces
-        if (qrtext.length) {
+        if (qrtext.length > 0) {
           width += qrtext.length - 1;
         }
         return width;
@@ -196,8 +195,10 @@ function getQRCode(string, qrtext, callback) {
         ctx.fillStyle = "#FFF";
         ctx.fill();
       }
-      clearSpot(offsetX - 1, offsetY - 1, textWidth + 2, textHeight + 2);
-      drawText(qrtext, offsetX, offsetY);
+      if (qrtext.length > 0) {
+        clearSpot(offsetX - 1, offsetY - 1, textWidth + 2, textHeight + 2);
+        drawText(qrtext, offsetX, offsetY);
+      }
       // console.log(canvas.toDataURL());
 
 

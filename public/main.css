@@ -29,18 +29,16 @@ body {
 #button-div {
   position: relative;
   text-align: center;
+  margin-top: 5px;
 }
 
 .textbox-div {
   position: relative;
+  padding: 10px;
 }
 
-#string-text {
-  width: 280px;
-}
-
-#qr-text {
-  width: 280px;
+.textbox-div input {
+  margin-top: 5px;
 }
 
 #go-button {

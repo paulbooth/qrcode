@@ -9,7 +9,7 @@ function goTime() {
   console.log(string);
   console.log(qrtext);
   if (string.length == 0) {
-    string = 'http://thepaulbooth.com/qrcode';
+    string = 'http://thepaulbooth.com';
   }
   $('#result-div').remove();
   $('#content').append($('<div id="loading">Loading...</div>'));

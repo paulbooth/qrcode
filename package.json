@@ -1,0 +1,18 @@
+{
+  "name": "qrtext",
+  "version": "1.0.0",
+  "description": "A module to put text on your qrcode.",
+  "author": "Paul Booth <thepaulbooth@gmail.com>",
+  "dependencies": {
+    "qrcode": "*",
+    "png-js": "*",
+    "fs": "*",
+    "node-gyp": "*",
+    "canvas": "*",
+    "jsqrcode": "*",
+    "express": "*",
+    "http": "*",
+    "body-parser": "*",
+    "jade": "*"
+  }
+}
